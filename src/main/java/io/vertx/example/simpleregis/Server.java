@@ -26,13 +26,6 @@ import io.vertx.ext.apex.handler.BodyHandler;
 import io.vertx.ext.mongo.MongoClient;
 import io.vertx.core.AbstractVerticle;
 
-
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * @author <a href="http://tfox.org">Tim Fox</a>
- */
 public class Server extends AbstractVerticle {
 
     // Convenience method so you can run it in your IDE
@@ -41,14 +34,10 @@ public class Server extends AbstractVerticle {
     }
 
     private Server that = this;
-
     private DataAccess dataAccess;
 
     @Override
     public void start() {
-
-
-
         Router router = Router.router(vertx);
 
         router.route().handler(BodyHandler.create());
@@ -57,10 +46,8 @@ public class Server extends AbstractVerticle {
 
         vertx.createHttpServer().requestHandler(router::accept).listen(8080);
 
-
         dataAccess = new DataAccess(vertx);
     }
-
 
     /*
         contoh hit url : GET http://localhost:8080/user/userbaru1
